@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Math With Ellia Clarissa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Metamorphous&display=swap');
+
+        body { 
+            font-family: 'Metamorphous', serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: #050005; 
+            background: linear-gradient(to bottom, #2d002d, #050005); 
+            color: #f0f0f0;
+            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden; /* Mencegah scrollbar horizontal karena efek partikel */
+        }
+
+        .box { 
+            background: rgba(0, 0, 0, 0.7); 
+            backdrop-filter: blur(15px);
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 2px solid #a29bfe;
+            box-shadow: 0 0 40px rgba(162, 155, 254, 0.5);
+            width: 90%; 
+            max-width: 850px; 
+            text-align: center; 
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 { 
+            font-family: 'Cinzel', serif; 
+            color: #ffffff; 
+            text-shadow: 0 0 15px #a29bfe, 0 0 5px #fff;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .line-container { 
+            position: relative; 
+            height: 150px; 
+            margin: 40px 0; 
+            border-bottom: 4px solid #a29bfe; 
+            box-shadow: 0 5px 15px rgba(162, 155, 254, 0.4);
+            width: 100%;
+        }
+
+        .tick { 
+            position: absolute; 
+            bottom: 0; 
+            width: 2px; 
+            height: 20px; 
+            background: #a29bfe; 
+        }
+        
+        .tick span { 
+            position: absolute; 
+            top: 30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            font-weight: bold; 
+            font-size: 13px; 
+            color: #fff;
+            text-shadow: 0 0 5px #a29bfe;
+        }
+
+        #char-wrapper { 
+            position: absolute; 
+            bottom: 25px; 
+            width: 70px; 
+            height: 90px; 
+            margin-left: -35px; 
+            transition: left 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease; 
+            z-index: 100;
+        }
+
+        .hadap-kanan { transform: scaleX(1); } 
+        .hadap-kiri { transform: scaleX(-1); }  
+
+        .controls { 
+            background: rgba(20, 0, 20, 0.8); 
+            padding: 20px; 
+            border-radius: 12px; 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center; 
+            align-items: center; 
+            border: 1px solid #a29bfe;
+            flex-wrap: wrap; 
+        }
+
+        input[type="number"] { width: 60px; }
+        select { width: auto; max-width: 220px; }
+
+        input, select, button { 
+            padding: 10px; 
+            font-size: 14px; 
+            border-radius: 6px; 
+            border: 1px solid #a29bfe; 
+            background: #1a001a; 
+            color: white;
+            font-family: 'Metamorphous', serif;
+            box-sizing: border-box;
+        }
+
+        button { 
+            background: #6c5ce7; 
+            box-shadow: 0 0 10px #6c5ce7;
+            cursor: pointer; 
+            font-weight: bold;
+            flex-grow: 1; 
+            max-width: 200px;
+            transition: 0.3s;
+        }
+
+        button:hover { 
+            background: #a29bfe; 
+            box-shadow: 0 0 20px #fff; 
+        }
+
+        #log { 
+            margin-top: 25px; 
+            text-align: left; 
+            padding: 15px; 
+            background: rgba(162, 155, 254, 0.1); 
+            border-left: 5px solid #a29bfe; 
+            min-height: 80px; 
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        .hl { color: #a29bfe; font-weight: bold; text-shadow: 0 0 5px #a29bfe; }
+        
+        /* Efek Partikel Magis Warna-warni */
+        .magic-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: magicFloat 2s infinite;
+            z-index: 50;
+        }
+
+        @keyframes magicFloat {
+            0% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+        }
+
+        /* Aura Pelangi Berdenyut */
+        .rainbow-aura {
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,0,0,0.1) 15%, rgba(255,165,0,0.1) 30%, rgba(255,255,0,0.1) 45%, rgba(0,128,0,0.1) 60%, rgba(0,0,255,0.1) 75%, rgba(75,0,130,0.1) 90%, rgba(238,130,238,0.1) 100%);
+            border-radius: 50%;
+            animation: rainbowPulse 3s infinite linear;
+            filter: blur(5px);
+        }
+
+        @keyframes rainbowPulse {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(360deg); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Wizard of Math: Ellia Clarissa (by Rino)</h2>
+    
+    <div class="line-container" id="line">
+        <div id="char-wrapper" class="hadap-kanan">
+            <div class="rainbow-aura"></div>
+            <div class="magic-particle" style="background: #ff4d4d; --dx: -20px; --dy: -30px; animation-delay: 0s;"></div>
+            <div class="magic-particle" style="background: #4dff4d; --dx: 20px; --dy: -40px; animation-delay: 0.5s;"></div>
+            <div class="magic-particle" style="background: #4d4dff; --dx: 10px; --dy: -20px; animation-delay: 1s;"></div>
+            <div class="magic-particle" style="background: #ffff4d; --dx: -15px; --dy: -50px; animation-delay: 1.5s;"></div>
+            
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 50 5 L 20 40 L 80 40 Z" fill="#000000" stroke="#a29bfe" stroke-width="1"/>
+                <path d="M 15 40 L 85 40 L 85 45 L 15 45 Z" fill="#1a001a" />
+                <circle cx="50" cy="55" r="12" fill="#ffeaa7" />
+                <circle cx="58" cy="52" r="2" fill="#000" />
+                <path d="M 50 67 L 25 95 L 75 95 Z" fill="#000000" stroke="#a29bfe" stroke-width="1"/>
+                <line x1="65" y1="50" x2="85" y2="20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="85" cy="20" r="6" fill="#fff">
+                    <animate attributeName="fill" values="#ff4d4d;#4dff4d;#4d4dff;#ffff4d;#ff4d4d" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="r" values="5;7;5" dur="1s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+    <div class="controls">
+        <input type="number" id="v1" value="-3">
+        <select id="op">
+            <option value="+">TAMBAH (MAJU)</option>
+            <option value="-">KURANG (MUNDUR)</option>
+        </select>
+        <input type="number" id="v2" value="-5">
+        <button id="btnRun" onclick="jalankan()">RAPALKAN MANTRA!</button>
+        <button onclick="location.reload()" style="background:#444; border-color:#666; box-shadow:none;">RESET</button>
+    </div>
+
+    <div id="log">🪄 Siapkan mantra Anda...</div>
+</div>
+
+<script>
+    const char = document.getElementById('char-wrapper');
+    const log = document.getElementById('log');
+    const btn = document.getElementById('btnRun');
+    const range = 15;
+
+    for (let i = -range; i <= range; i++) {
+        const t = document.createElement('div');
+        t.className = 'tick';
+        t.style.left = ((i + range) / (range * 2) * 100) + '%';
+        t.innerHTML = `<span>${i}</span>`;
+        document.getElementById('line').appendChild(t);
+    }
+
+    function getPct(n) { return ((n + range) / (range * 2) * 100) + '%'; }
+
+    async function jalankan() {
+        btn.disabled = true;
+        const a = parseInt(document.getElementById('v1').value) || 0;
+        const o = document.getElementById('op').value;
+        const b = parseInt(document.getElementById('v2').value) || 0;
+
+        // Langkah 1: Portal Awal
+        log.innerHTML = `🔮 1. Penyihir muncul di titik <span class='hl'>${a}</span>.`;
+        char.style.left = getPct(a);
+        char.className = (a >= 0) ? "hadap-kanan" : "hadap-kiri";
+        await new Promise(r => setTimeout(r, 1600));
+
+        // Langkah 2: Arah Hadap (RPM)
+        const h2 = (b >= 0) ? "hadap-kanan" : "hadap-kiri";
+        char.className = h2;
+        log.innerHTML += `<br>🔋 2. Energi <span class='hl'>${b}</span>: Penyihir <span class='hl'>MENGHADAP ${b >= 0 ? 'KANAN' : 'KIRI'}</span>.`;
+        await new Promise(r => setTimeout(r, 1200));
+
+        // Langkah 3: Gerak (RPM)
+        const aksi = (o === "+") ? "MELANGKAH MAJU" : "MELANGKAH MUNDUR";
+        log.innerHTML += `<br>✨ 3. Mantra <span class='hl'>${o === '+' ? 'TAMBAH' : 'KURANG'}</span>! Penyihir <span class='hl'>${aksi}</span>.`;
+        
+        const hasil = (o === "+") ? (a + b) : (a - b);
+        char.style.left = getPct(hasil);
+        
+        await new Promise(r => setTimeout(r, 1600));
+        log.innerHTML += `<br><br><b>🏁 HASIL: Mantra berhenti di titik ${hasil}!</b>`;
+        btn.disabled = false;
+    }
+</script>
+</body>
+</html>
