@@ -6,7 +6,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Metamorphous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style> 
         .rules-box {
@@ -17,17 +17,18 @@
             border-radius: 10px;
             text-align: left;
             box-shadow: inset 0 0 10px rgba(162, 155, 254, 0.1);
-            font-family: 'Arial', Arial, Helvetica, sans-serif, serif; 
+            font-family: 'Arial', Helvetica, sans-serif; 
         }
 
         .rules-box h3 {
-            font-family: medievalsharp; serif;
+            font-family: 'EB Garamond', serif;
+            font-weight: 700;
             color: #ffffff;
             font-size: 1.5rem;
             margin-top: 0;
             margin-bottom: 10px;
             text-align: center;
-            text-shadow: 0 0 8px none(255, 255, 255);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
             letter-spacing: 1px;
         }
 
@@ -36,7 +37,7 @@
             padding: 0;
             margin: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Splits rules into two columns */
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
 
@@ -54,28 +55,29 @@
 
         @media (max-width: 600px) {
             .rules-box ul {
-                grid-template-columns: 1fr; /* Stacks rules on smaller screens */
+                grid-template-columns: 1fr;
             }
         }
+        
         body { 
-            font-family: 'Metamorphous', serif; 
+            font-family: 'Arial', Helvetica, sans-serif; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             
-            /* --- NEW BACKGROUND SETTINGS --- */
-            background-image: url('https://raw.githubusercontent.com/Rino-Sinus-Pandanu/Journey-In-Integria/refs/heads/main/Ellia%20Clarissa.png'); /* Put your exact image name here! */
-            background-size: cover; /* Makes the image cover the whole screen */
-            background-position: center; /* Keeps the most important part of the image in the middle */
-            background-attachment: fixed; /* Keeps the background still if you scroll */
-            background-repeat: no-repeat; /* Prevents the image from tiling */
-            /* ------------------------------- */
+            background-image: url('https://raw.githubusercontent.com/Rino-Sinus-Pandanu/Journey-In-Integria/refs/heads/main/Ellia%20Clarissa.png'); 
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat; 
 
             color: #f0f0f0;
-            padding: 20px;
+            padding: 20px 20px 70px 20px; 
             min-height: 100vh;
             margin: 0;
             overflow-x: hidden;
+            position: relative; 
+            box-sizing: border-box;
         }
 
         .box { 
@@ -94,31 +96,28 @@
         }
 
         h2 { 
-            font-family: 'MedievalSharp', serif; 
+            font-family: 'EB Garamond', serif; 
+            font-weight: 700;
             color: #ffffff; 
-            text-shadow: 0 0 15px #a29bfe, 0 0 5px #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
             letter-spacing: 1px;
             margin-bottom: 20px;
-            font-size: 2.5rem; /* Adjusting the main title size */
-            
-            /* ADD THIS LINE BELOW */
+            font-size: 2.5rem; 
             line-height: 1.1; 
         }
 
-        /* --- KODE KAMERA & ANIMASI BARU --- */
         #camera { 
             position: relative; 
-            height: 190px; /* Made taller to fit the numbers */
+            height: 190px; 
             margin: 20px 0 40px 0; 
             width: 100%;
             overflow: hidden; 
-            /* The border-bottom has been moved to the block below! */
         }
 
         #camera::after {
             content: '';
             position: absolute;
-            bottom: 45px; /* Moves the line up to make room for numbers below */
+            bottom: 45px; 
             left: 0;
             width: 100%;
             border-bottom: 4px solid #a29bfe; 
@@ -128,22 +127,21 @@
         .long-line {
             position: absolute;
             height: 100%;
-            left: 50%; /* Titik 0 selalu di tengah layar */
-            /* Transisi akan diatur otomatis oleh Javascript */
+            left: 50%; 
         }
 
         @keyframes jalan {
-            0%, 100% { bottom: 70px; } 
-            50% { bottom: 85px; } /* A little hop into the air */
+            0%, 100% { bottom: 60px; } 
+            50% { bottom: 75px; } 
         }
 
         .animasi-jalan {
-            animation: jalan 0.35s infinite; /* Kecepatan langkah kaki */
+            animation: jalan 0.35s infinite; 
         }
 
         .tick { 
             position: absolute; 
-            bottom: 45px; /* Moved up to perfectly sit on the new line */
+            bottom: 45px; 
             width: 2px; 
             height: 20px; 
             background: #a29bfe; 
@@ -154,19 +152,19 @@
             top: 30px; 
             left: 50%; 
             transform: translateX(-50%); 
-            font-family: Arial, Helvetica, sans-serif; /* This changes the font to Arial */
+            font-family: Arial, Helvetica, sans-serif; 
             font-weight: bold; 
             font-size: 13px;
             color: #fff;
-            text-shadow: 0 0 5px #a29bfe;
+            text-shadow: 0 0 5px #000000;
         }
 
         #char-wrapper { 
             position: absolute; 
-            bottom: 70px; /* Moved up so she doesn't sink into the line */
-            width: 70px; 
+            bottom: 60px; 
+            width: 90px; 
             height: 90px; 
-            margin-left: -35px; 
+            margin-left: -45px; 
             transition: left 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease; 
             z-index: 100;
         }
@@ -226,10 +224,10 @@
             border-radius: 8px;
             font-size: 1rem;
             color: #e0e0e0;
-            font-family: Arial, Helvetica, sans-serif; /* Add this line to change the font! */
+            font-family: Arial, Helvetica, sans-serif; 
         }
 
-        .hl { color: #a29bfe; font-weight: bold; text-shadow: 0 0 5px #a29bfe; }
+        .hl { color: #a29bfe; font-weight: bold; text-shadow: 0 0 5px #000000; }
             
         .magic-particle {
             position: absolute;
@@ -259,26 +257,50 @@
             filter: blur(5px);
         }
 
-        @keyframes rainbowPulse {
-            0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
-            50% { transform: scale(1.1) rotate(180deg); opacity: 0.8; }
-            100% { transform: scale(1) rotate(360deg); opacity: 0.5; }
+        .footer {
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            
+            background-color: #000000; 
+            padding: 15px 0; 
+            margin: 0;
+
+            text-align: center;
+            font-family: 'Arial', Helvetica, sans-serif;
+            font-size: 0.9rem;
+            color: #a29bfe;
+            letter-spacing: 1px;
+            z-index: 10; 
+        }
+        .version-box {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            border: 1px solid #a29bfe;
+            padding: 5px 15px;
+            border-radius: 8px;
+            color: #ffc400; 
+            font-family: 'EB Garamond', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(162, 155, 254, 0.2);
         }
     </style>
 </head>
 <body>
-
+<div style="width: 90%; max-width: 850px; text-align: right; margin-bottom: 15px;">
+    <div class="version-box">Journey in Integria v2.0</div>
+</div>
 <div class="box">
     <h2>
         Journey in Integria<br>
         
-        <span style="font-size: 1.6rem; color: #ffc400; font-family: 'Metamorphous', serif; text-shadow: 0 0 10px rgba(255, 212, 73, 0.8);">
+        <span style="font-size: 1.6rem; color: #ffc400;">
             Learn Mathematics with Ellia Clarissa
         </span><br>
         
-        <span style="font-size: 2.0rem; color: #ffffff; font-family: 'MedievalSharp', serif; text-shadow: white;">
-            (by Rino Sinus Pandanu)
-        </span>
     </h2>
     
     <div id="camera">
@@ -291,18 +313,9 @@
                 <div class="magic-particle" style="background: #4d4dff; --dx: 10px; --dy: -20px; animation-delay: 1s;"></div>
                 <div class="magic-particle" style="background: #ffff4d; --dx: -15px; --dy: -50px; animation-delay: 1.5s;"></div>
                 
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 50 5 L 20 40 L 80 40 Z" fill="#000000" stroke="#a29bfe" stroke-width="1"/>
-                    <path d="M 15 40 L 85 40 L 85 45 L 15 45 Z" fill="#1a001a" />
-                    <circle cx="50" cy="55" r="12" fill="#ffeaa7" />
-                    <circle cx="58" cy="52" r="2" fill="#000" />
-                    <path d="M 50 67 L 25 95 L 75 95 Z" fill="#000000" stroke="#a29bfe" stroke-width="1"/>
-                    <line x1="65" y1="50" x2="85" y2="20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="85" cy="20" r="6" fill="#fff">
-                        <animate attributeName="fill" values="#ff4d4d;#4dff4d;#4d4dff;#ffff4d;#ff4d4d" dur="2s" repeatCount="indefinite" />
-                        <animate attributeName="r" values="5;7;5" dur="1s" repeatCount="indefinite" />
-                    </circle>
-                </svg>
+                <img src="https://raw.githubusercontent.com/Rino-Sinus-Pandanu/Journey-In-Integria/91fd732b34a0dabcea8f87588d8975848faf7474/Ellia%20Pixel.png" 
+                     alt="Ellia Clarissa Pixel" 
+                     style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px rgba(162, 155, 254, 0.8));">
             </div>
 
         </div>
@@ -321,14 +334,18 @@
 
     <div id="log">🪄 Siapkan mantra Anda...</div>
     <div class="rules-box">
-        <h3>ATURAN DASAR MANTRA</h3>
+        <h3>Aturan Dasar Mantra</h3>
         <ul>
-            <li><span class="hl">(+) PENJUMLAHAN</span> = MELANGKAH <b>MAJU</b></li>
-            <li><span class="hl">(-) PENGURANGAN</span> = MELANGKAH <b>MUNDUR</b></li>
-            <li><span class="hl">BILANGAN POSITIF</span> = MENGHADAP <b>KANAN</b></li>
-            <li><span class="hl">BILANGAN NEGATIF</span> = MENGHADAP <b>KIRI</b></li>
+            <li><span class="hl">(+) PENJUMLAHAN</span> = MELANGKAH <b style="color: #ffc400; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);">MAJU</b></li>
+            <li><span class="hl">(-) PENGURANGAN</span> = MELANGKAH <b style="color: #ffc400; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);">MUNDUR</b></li>
+            <li><span class="hl">BILANGAN POSITIF</span> = MENGHADAP <b style="color: #ffc400; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);">KANAN</b></li>
+            <li><span class="hl">BILANGAN NEGATIF</span> = MENGHADAP <b style="color: #ffc400; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);">KIRI</b></li>
         </ul>
     </div>
+</div>
+
+<div class="footer">
+    © 2026 Rino Sinus Pandanu. Hak cipta dilindungi.
 </div>
 
 <script>
@@ -338,37 +355,33 @@
     const log = document.getElementById('log');
     const btn = document.getElementById('btnRun');
     
-    const range = 100; // Garis bilangan kini dari -100 sampai 100!
-    const jarakPixels = 45; // Jarak antar angka (dalam pixel)
+    const range = 100; 
+    const jarakPixels = 45; 
 
-    // Membuat deretan angka
     for (let i = -range; i <= range; i++) {
         const t = document.createElement('div');
         t.className = 'tick';
         t.style.left = (i * jarakPixels) + 'px'; 
         
         if (i === 0) {
-            t.innerHTML = `<span style="color: #ff4d4d; text-shadow: 0 0 8px #ff4d4d; font-size: 15px; font-family: Arial; font-weight: bold;">${i}</span>`;
+            t.innerHTML = `<span style="color: #ff4d4d; font-size: 15px; font-family: Arial; font-weight: bold; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);">${i}</span>`;
         } else {
             t.innerHTML = `<span style="font-family: Arial; font-weight: bold; font-size: 15px;">${i}</span>`;
         }
         line.appendChild(t);
     }
 
-    // Fungsi canggih untuk menggeser karakter sekaligus kamera
     function aturPosisi(angka, durasi) {
         line.style.transition = `transform ${durasi}s ease-in-out`;
         char.style.transition = `left ${durasi}s ease-in-out, transform 0.5s ease`;
         
         char.style.left = (angka * jarakPixels) + 'px';
-        // Kamera bergeser ke arah berlawanan agar Ellia selalu di tengah!
         line.style.transform = `translateX(${-(angka * jarakPixels)}px)`; 
     }
 
-    // Menempatkan posisi saat web pertama kali dibuka (Selalu di 0)
     setTimeout(() => {
-        aturPosisi(0, 0); // This forces Ellia and the camera to start exactly at 0
-        char.className = "hadap-kanan"; // Default facing right
+        aturPosisi(0, 0); 
+        char.className = "hadap-kanan"; 
     }, 100);
 
     async function jalankan() {
@@ -377,35 +390,31 @@
         const o = document.getElementById('op').value;
         const b = parseInt(document.getElementById('v2').value) || 0;
 
-        // 1. Portal Awal
         log.innerHTML = `🔮 1. Ellia Clarissa bersiap di titik <span class='hl'>${a}</span>.`;
-        aturPosisi(a, 0.8); // Bergerak cepat jika posisi awal diubah manual
+        aturPosisi(a, 0.8); 
         char.className = (a >= 0) ? "hadap-kanan" : "hadap-kiri";
         await new Promise(r => setTimeout(r, 1000));
 
-        // 2. Arah Hadap
         const h2 = (b >= 0) ? "hadap-kanan" : "hadap-kiri";
         char.className = h2;
         log.innerHTML += `<br>🔋 2. Energi <span class='hl'>${b}</span>: Ellia Clarissa <span class='hl'>MENGHADAP ${b >= 0 ? 'KANAN' : 'KIRI'}</span>.`;
         await new Promise(r => setTimeout(r, 1200));
 
-        // 3. Mantra Berjalan
         const aksi = (o === "+") ? "MELANGKAH MAJU" : "MELANGKAH MUNDUR";
         log.innerHTML += `<br>✨ 3. Mantra <span class='hl'>${o === '+' ? 'TAMBAH' : 'KURANG'}</span>! Ellia Clarissa <span class='hl'>${aksi} perlahan</span>...`;
         
         const hasil = (o === "+") ? (a + b) : (a - b);
         
-        // Hitung durasi (makin jauh jaraknya, makin lama jalannya)
         const jarakLangkah = Math.abs(hasil - a);
         const waktuJalan = Math.max(2, jarakLangkah * 0.5); 
         
-        char.classList.add("animasi-jalan"); // Mulai animasi jalan
+        char.classList.add("animasi-jalan"); 
         
-        aturPosisi(hasil, waktuJalan); // Mulai melangkah perlahan
+        aturPosisi(hasil, waktuJalan); 
         
-        await new Promise(r => setTimeout(r, waktuJalan * 1000)); // Tunggu sampai tiba
+        await new Promise(r => setTimeout(r, waktuJalan * 1000)); 
         
-        char.classList.remove("animasi-jalan"); // Berhenti berjalan
+        char.classList.remove("animasi-jalan"); 
 
         log.innerHTML += `<br><br><b>🏁 HASIL: Mantra berhenti di titik ${hasil}!</b>`;
         btn.disabled = false;
